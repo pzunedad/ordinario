@@ -1,8 +1,14 @@
-import { Character } from "@/app/types/types"
+import { Character, ResultCharacters } from "@/app/types/types"
 import api from "./axios"
 
-export const get10Characters = async(page:number) => {
-    const response = await api.get<Character>(`/character?page=${page}`)
+type CharactersFilters = {
+    status?: string;
+    gender?: string;
+    name?: string;
+}
+
+export const get20Characters = async(page:number) => {
+    const response = await api.get<ResultCharacters>(`/character?page=${page}`)
     return response.data
 }
 

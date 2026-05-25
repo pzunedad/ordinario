@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Character, Info } from "./types/types";
-import { get10Characters } from "./lib/api/utils";
+import { get20Characters } from "./lib/api/utils";
 
 
 const CharactersPage =() =>{
@@ -18,7 +18,7 @@ const CharactersPage =() =>{
     const loadCharacters = async () => {
       try {
         setError("");
-        const data = await get10Characters(page);
+        const data = await get20Characters(page);
         setCharacters(data.results);
         setInfo(data.info);
       } catch {
@@ -29,15 +29,21 @@ const CharactersPage =() =>{
     loadCharacters();
   }, [page]);
 
+  const handleClick =(id: number) => {
+    router.push(`/characters/${id}`)
+  }  
+
   return (
     <div>
       <h1>Personajes</h1>
       {error && <p>{error}</p>}
       <div>
         {characters.map((character) => (
-          <div key={character.id} onClick={() => router.push(`/characters/${character.id}`)}>
+          <div key={character.id} onClick={() => handleClick(character.id)}>
             <img src={character.image} alt={character.name} />
             <h2>{character.name}</h2>
+            <p>Estado: {character.status}</p>
+            <p>Genero: {character.gender}</p>
           </div>
         ))}
       </div>
