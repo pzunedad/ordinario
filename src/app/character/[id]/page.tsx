@@ -13,6 +13,8 @@ const CharacterDetailPage =() =>{
   const [character, setCharacter] = useState<Character | null>(null);
   const [error, setError] = useState("");
 
+  const router = useRouter();
+
   useEffect(() => {
     const loadCharacter = async () => {
       try {
@@ -29,7 +31,7 @@ const CharacterDetailPage =() =>{
 
   if (error) return <p>{error}</p>;
   if (!character) return <p>Cargando personaje...</p>;
-  const router = useRouter();
+  
 
   const handleBack =() => {
     router.back();

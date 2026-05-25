@@ -10,16 +10,7 @@
   gap: 1rem;
 }
 
-.character-item > div {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(127, 127, 127, 0.25);
-  border-radius: 14px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.character-item > div:hover {
+.character-item hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
 }
@@ -44,4 +35,26 @@
 .character-grid > p {
   margin-bottom: 1rem;
   color: #d63b3b;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+.filters button,
+.filters input {
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(127, 127, 127, 0.4);
+}
+
+.filters button {
+  cursor: pointer;
+}
+
+.filters input {
+  min-width: 220px;
 }
