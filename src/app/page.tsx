@@ -13,13 +13,15 @@ const CharactersPage = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [info, setInfo] = useState<Info | null>(null);
   const [error, setError] = useState("");
-  const [statusFilter, setStatusFilter] = useState("Alive");
-  const [genderFilter, setGenderFilter] = useState("Male");
+  const [statusFilter, setStatusFilter] = useState("");
+  const [genderFilter, setGenderFilter] = useState("");
   const [nameFilter, setNameFilter] = useState("");
 
   const router = useRouter();
 
   useEffect(() => {
+    let isCurrentRequest = true;
+
     const loadCharacters = async () => {
       try {
         setError("");
@@ -28,9 +30,18 @@ const CharactersPage = () => {
           gender: genderFilter,
           name: nameFilter,
         });
+
+        if (!isCurrentRequest) {
+          return;
+        }
+
         setCharacters(data.results);
         setInfo(data.info);
       } catch {
+        if (!isCurrentRequest) {
+          return;
+        }
+
         setCharacters([]);
         setInfo(null);
         setError("No se encontraron personajes con esos filtros.");
@@ -38,6 +49,10 @@ const CharactersPage = () => {
     };
 
     loadCharacters();
+
+    return () => {
+      isCurrentRequest = false;
+    };
   }, [page, statusFilter, genderFilter, nameFilter]);
 
   const handleClick = (id: number) => {

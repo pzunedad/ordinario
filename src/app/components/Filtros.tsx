@@ -6,8 +6,8 @@ type FiltrosProps = {
   NombreBusqueda: (nombre: string) => void;
 };
 
-const opcionesEstado = ["Alive", "Dead", "unknown"];
-const opcionesGenero = ["Male", "Female", "Genderless", "unknown"];
+const opcionesEstado = ["","Alive", "Dead", "unknown"];
+const opcionesGenero = ["","Male", "Female", "Genderless", "unknown"];
 
 const Filtros = ({ EstadoCambio, GeneroCambio, NombreBusqueda }: FiltrosProps) => {
   const [estado, setEstado] = useState(0);
