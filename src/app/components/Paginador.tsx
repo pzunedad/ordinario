@@ -1,3 +1,5 @@
+import "./paginador.css";
+
 type Props = {
   next: boolean;
   prev: boolean;
@@ -44,7 +46,7 @@ const Paginador = ({
           className="arrowContainer"
           onClick={() => setPage(page - 1)}
         >
-          <p>{"<"}</p>
+          <p>Anterior</p>
         </div>
       )}
 
@@ -65,7 +67,7 @@ const Paginador = ({
           className="arrowContainer"
           onClick={() => setPage(page + 1)}
         >
-          <p>{">"}</p>
+          <p>Siguiente</p>
         </div>
       )}
     </div>

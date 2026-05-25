@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams , useRouter} from "next/navigation";
 import { getCharacterByID } from "@/app/lib/api/utils";
 import { Character } from "@/app/types/types";
-import { useRouter } from "next/navigation";
+import "./page.css"
 
 
 const CharacterDetailPage =() =>{
@@ -37,8 +37,8 @@ const CharacterDetailPage =() =>{
 
   return (
     <div>
-      <div>
-        <img src={character.image} alt={character.name} />
+      <div className="characterCard">
+        <img src={character.image} alt={character.name} className="character-image"/>
         <h1>{character.name}</h1>
         <p><strong>Género:</strong> {character.gender}</p>
         <p><strong>Estado:</strong> {character.status}</p>

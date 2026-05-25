@@ -1,0 +1,47 @@
+.character-grid {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.character-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.character-item > div {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(127, 127, 127, 0.25);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.character-item > div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+.character-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.character-item h2 {
+  font-size: 1.05rem;
+  margin: 0.9rem 0.9rem 0.5rem;
+}
+
+.character-item p {
+  margin: 0 0.9rem 0.6rem;
+  font-size: 0.92rem;
+  opacity: 0.9;
+}
+
+.character-grid > p {
+  margin-bottom: 1rem;
+  color: #d63b3b;
+}

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Character, Info } from "./types/types";
 import { get20Characters } from "./lib/api/utils";
 import Paginador from "./components/Paginador";
+import "./page.css"
 
 
 const CharactersPage =() =>{
