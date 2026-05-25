@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Character, Info } from "./types/types";
 import { get20Characters } from "./lib/api/utils";
+import Paginador from "./components/Paginador";
 
 
 const CharactersPage =() =>{
@@ -30,14 +31,14 @@ const CharactersPage =() =>{
   }, [page]);
 
   const handleClick =(id: number) => {
-    router.push(`/characters/${id}`)
+    router.push(`/character/${id}`)
   }  
 
   return (
-    <div>
+    <div className="character-grid">
       <h1>Personajes</h1>
       {error && <p>{error}</p>}
-      <div>
+      <div className="character-item">
         {characters.map((character) => (
           <div key={character.id} onClick={() => handleClick(character.id)}>
             <img src={character.image} alt={character.name} />
@@ -47,6 +48,15 @@ const CharactersPage =() =>{
           </div>
         ))}
       </div>
+      {info && (
+        <Paginador
+          next={Boolean(info.next)}
+          prev={Boolean(info.prev)}
+          page={page}
+          totalPages={info.pages}
+          setPage={setPage}
+        />
+      )}
     </div>
   );
 }

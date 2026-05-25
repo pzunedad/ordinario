@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { getCharacterByID } from "@/app/lib/api/utils";
 import { Character } from "@/app/types/types";
+import { useRouter } from "next/navigation";
 
 
 const CharacterDetailPage =() =>{
@@ -28,6 +29,11 @@ const CharacterDetailPage =() =>{
 
   if (error) return <p>{error}</p>;
   if (!character) return <p>Cargando personaje...</p>;
+  const router = useRouter();
+
+  const handleBack =() => {
+    router.back();
+  }
 
   return (
     <div>
@@ -40,6 +46,7 @@ const CharacterDetailPage =() =>{
         <p><strong>ID: </strong> {character.id}</p>
         <p><strong>Origen:</strong> {character.origin.name}</p>
         <p><strong>Ubicación actual:</strong> {character.location.name}</p>
+        <button onClick={()=> handleBack()}> Volver</button>
       </div>
     </div>
   );
